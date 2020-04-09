@@ -7,7 +7,8 @@
 </template>
 
 <script>
-  import { CharacterPOne, CharacterPTwo } from '../../common/personClass'
+  import { CharacterPOne, CharacterPTwo } from '../../common/characterClass'
+  import { BulletClass } from '../../common/bulletClass'
   const { ipcRenderer } = require('electron')
 
   export default {
@@ -23,6 +24,7 @@
     mounted() {
       console.log('p', new CharacterPOne('kk'))
       console.log('p', new CharacterPTwo('A'))
+      console.log('p', new BulletClass('A'))
       document.addEventListener('keydown', (e) => {
         this.moveP(e)
         console.log('window-height', window)
@@ -38,6 +40,7 @@
         /*
         * WASD: 87.65.83.68
         * UDLR: 38.37.40.39
+        * keyCode-status = true
         * */
         console.log('ground', this.$refs.ground.getBoundingClientRect())
         switch (e.keyCode) {

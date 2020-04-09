@@ -1,36 +1,47 @@
-class Person {
+/*
+* 角色共同属性
+* */
+class Character {
 	constructor(role) {
-		if (new.target === Person) {
+		if (new.target === Character) {
 			throw new Error('不能实例Person')
 		}
 		this.role = role
 		this.health = 100
 		this.blue = 100
+		this.width = 40
+		this.height = 100
 	}
 }
-
-class APerson extends Person {
+/*
+* P1 属性
+* */
+class ACharacter extends Character {
 	constructor(name) {
 		super('p1')
 		this.name = name
 		this.color = 'red'
+		// todo: bg
 	}
 }
-
-class BPerson extends Person {
+/*
+* P2属性
+* */
+class BCharacter extends Character {
 	constructor(name) {
 		super('p2')
 		this.name = name
 		this.color = 'blue'
+		// todo: bg
 	}
 }
 
 function character_creator(type) {
 	switch (type) {
 		case 'p1':
-			return APerson
+			return ACharacter
 		case 'p2':
-			return BPerson
+			return BCharacter
 		default:
 			throw new Error('参数错误, 可选参数: p1,p2')
 	}
