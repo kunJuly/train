@@ -7,6 +7,7 @@
 </template>
 
 <script>
+  import { CharacterPOne, CharacterPTwo } from '../../common/personClass'
   const { ipcRenderer } = require('electron')
 
   export default {
@@ -20,6 +21,8 @@
       }
     },
     mounted() {
+      console.log('p', new CharacterPOne('kk'))
+      console.log('p', new CharacterPTwo('A'))
       document.addEventListener('keydown', (e) => {
         this.moveP(e)
         console.log('window-height', window)
