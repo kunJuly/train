@@ -29,12 +29,14 @@
         this.person.push(new CharacterPTwo())
       },
       createChildWin() {
-        this.person.map((item, key) => {
-          console.log(item)
+        const data = this._.cloneDeep(this.person)
+        this._.forEach(data, (item, key) => {
           console.log(key)
-          this.person.splice(key, 1)
+          console.log(item)
+          if (item) data.splice(key, 1)
+          console.log('per', data)
         })
-        console.log('de', this.person)
+        this.person = data
       }
     }
   }
