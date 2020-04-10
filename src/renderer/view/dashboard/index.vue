@@ -1,8 +1,11 @@
 <template>
   <div class="dashboard">
     <div ref="ground" class="ground">
-      <div ref="person" class="person" :style="{top: person.top + 'px', left: person.left + 'px'}"></div>
+      <div v-for="(per, key) in person" :key="key" class="person" :style="{top: per.top + 'px', left: per.left + 'px'}"></div>
     </div>
+    <button @click="createChildWin">des</button>
+    <button @click="createA">createA</button>
+    <button @click="createB">createB</button>
   </div>
 </template>
 
@@ -15,62 +18,23 @@
     name: 'Dashborad',
     data() {
       return {
-        person: {
-          top: 0,
-          left: 0
-        }
+        person: []
       }
     },
-    mounted() {
-      console.log('p', new CharacterPOne('kk'))
-      console.log('p', new CharacterPTwo('A'))
-      console.log('p', new BulletClass('A'))
-      document.addEventListener('keydown', (e) => {
-        this.moveP(e)
-        console.log('window-height', window)
-        console.log('window-width', window.screen.width)
-        console.log('window-height', window.screen.height)
-        console.log('window-document.body.clientHeight', document.body.clientHeight)
-        console.log('window-document.body.clientHeight', document.body.clientWidth)
-      })
-    },
     methods: {
-      moveP(e) {
-        // console.log('e', e)
-        /*
-        * WASD: 87.65.83.68
-        * UDLR: 38.37.40.39
-        * keyCode-status = true
-        * */
-        console.log('ground', this.$refs.ground.getBoundingClientRect())
-        switch (e.keyCode) {
-          case 87:
-            this.person.top -= 10
-            console.log('offset', this.$refs.person)
-            console.log('offset', this.$refs.person.getBoundingClientRect())
-            return
-          case 83:
-            this.person.top += 10
-            console.log('offset', this.$refs.person)
-            console.log('offset', this.$refs.person.getBoundingClientRect())
-            return
-          case 65:
-            this.person.left -= 10
-            console.log('offset', this.$refs.person)
-            console.log('offset', this.$refs.person.getBoundingClientRect())
-            return
-          case 68:
-            this.person.left += 10
-            console.log('offset', this.$refs.person)
-            console.log('offset', this.$refs.person.getBoundingClientRect())
-            return
-        }
+      createA() {
+        this.person.push(new CharacterPOne())
+      },
+      createB() {
+        this.person.push(new CharacterPTwo())
       },
       createChildWin() {
-        ipcRenderer.send('asynchronous-message', 'ping')
-        // ipcRenderer.send('childWind-create-message', {
-        //   createChild: true
-        // })
+        this.person.map((item, key) => {
+          console.log(item)
+          console.log(key)
+          this.person.splice(key, 1)
+        })
+        console.log('de', this.person)
       }
     }
   }

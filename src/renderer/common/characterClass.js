@@ -19,9 +19,29 @@ class Character {
 class ACharacter extends Character {
 	constructor(name) {
 		super('p1')
+		const vm = this
 		this.name = name
 		this.color = 'red'
+		this.top = 0
+		this.left = 0
 		// todo: bg
+		const PaLinstener = (e) => {
+			switch (e.keyCode) {
+				case 87:
+					vm.top -= 10
+					return
+				case 83:
+					vm.top += 10
+					return
+				case 65:
+					vm.left -= 10
+					return
+				case 68:
+					vm.left += 10
+					return
+			}
+		}
+		document.addEventListener('keydown', PaLinstener)
 	}
 }
 /*
@@ -32,6 +52,8 @@ class BCharacter extends Character {
 		super('p2')
 		this.name = name
 		this.color = 'blue'
+		this.top = 0
+		this.left = 100
 		// todo: bg
 	}
 }
