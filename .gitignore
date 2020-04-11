@@ -8,4 +8,11 @@ npm-debug.log
 npm-debug.log.*
 thumbs.db
 !.gitkeep
-.idea
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/train.iml
+/.idea/vcs.xml
